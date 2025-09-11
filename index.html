@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Климкін Данило — Резюме</title>
+  <meta name="description" content="Резюме Климкіна Данила: Junior Media Buyer / Студент Інженерії ПЗ. Досвід у Google Ads, маркетингу, адмініструванні та продажах. Київ." />
+  <style>
+    /* ===== БАЗА ===== */
+    * { box-sizing: border-box; }
+    :root{
+      --bg: #0a0a0c;
+      --bg-soft: #101117;
+      --panel: #141523;
+      --text: #e9eaf1;
+      --muted: #a7a9b7;
+      --accent: #7C4DFF;   /* фіолетовий */
+      --accent-2: #00D1FF; /* бірюзовий */
+      --border: rgba(255,255,255,.1);
+      --radius: 16px;
+      --shadow: 0 12px 30px rgba(0,0,0,.45);
+      --t1: cubic-bezier(.2,.8,.2,1);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,77,255,.12), transparent 60%),
+                  radial-gradient(800px 400px at 100% 80%, rgba(0,209,255,.12), transparent 60%),
+                  linear-gradient(180deg, #090a0f, #0a0a0c 40%);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+      letter-spacing: .2px;
+    }
+
+    /* М’яка сітка у фоні */
+    .fx-grid { position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background:
+        radial-gradient(transparent 1px, rgba(255,255,255,.03) 1px) 0 0/24px 24px,
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent 45%);
+      mask: linear-gradient(180deg, white, white, transparent);
+    }
+
+    /* ===== ХЕДЕР ===== */
+    .nav { max-width: 1080px; margin: 0 auto; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 800; letter-spacing: .5px; }
+    .brand span { color: var(--accent); }
+    .nav a { color: var(--muted); text-decoration: none; margin-left: 16px; font-size: .95rem; }
+    .nav a:hover { color: var(--text); }
+    .btn-sm { padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; }
+
+    /* ===== HERO ===== */
+    .hero { max-width: 1080px; margin: 6vh auto 0; padding: 16px 20px 40px; }
+    .title { font-size: clamp(32px, 5vw, 58px); line-height: 1.04; font-weight: 900; margin: 8px 0 10px; }
+    .title .accent { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { color: var(--muted); max-width: 780px; margin-bottom: 18px; }
+    .contact { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); }
+    .chip { padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; backdrop-filter: blur(3px); }
+
+    .cta { margin-top: 18px; display:flex; gap: 14px; align-items: center; }
+    .btn { display:inline-block; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #0a0a0c; font-weight: 800; text-decoration: none; padding: 12px 18px; border-radius: 12px; box-shadow: var(--shadow); }
+    .link { color: var(--text); opacity: .85; text-decoration: none; }
+
+    /* ===== СЕКЦІЇ ===== */
+    .section { padding: 70px 20px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .h2 { font-size: clamp(22px, 3vw, 32px); margin: 0 0 14px; }
+    .muted { color: var(--muted); }
+
+    .grid-2 { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+
+    .panel { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+
+    .list { display: grid; gap: 12px; }
+    .item h3 { margin: 0 0 4px; font-size: 1.05rem; }
+    .item .meta { color: var(--muted); font-size: .95rem; }
+
+    /* Хронологія/таймлайн */
+    .timeline { position: relative; padding-left: 18px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(180deg, var(--accent), transparent); }
+    .tl { position: relative; padding-left: 14px; margin-bottom: 16px; }
+    .tl::before { content: ""; position: absolute; left: -2px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 0 3px rgba(124,77,255,.15); }
+    .tl .where { font-weight: 700; }
+
+    /* Сітки/картки */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+
+    /* Футер */
+    footer { border-top: 1px solid var(--border); padding: 28px 20px; color: #b9bbca; }
+
+    /* ===== Анімації проявлення ===== */
+    .reveal { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+    .reveal.in-view { animation: fadeUp .8s var(--t1) forwards; }
+    .d1.in-view { animation-delay: .1s; } .d2.in-view { animation-delay: .2s; }
+    .d3.in-view { animation-delay: .3s; } .d4.in-view { animation-delay: .4s; }
+
+    /* «Протирка» заголовка */
+    .title.reveal.in-view { mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%); -webkit-mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+      animation: fadeUp .9s var(--t1) forwards, sweep 1.6s .1s ease-out 1; }
+    @keyframes sweep { from { mask-position: -40% 0; -webkit-mask-position: -40% 0; } to { mask-position: 140% 0; -webkit-mask-position: 140% 0; } }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+
+    /* Доступність: без анімацій */
+    .reduced-motion * { animation: none !important; transition: none !important; }
+
+    /* Адаптив */
+    @media (max-width: 900px){ .grid-2 { grid-template-columns: 1fr; } .cards { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px){ .cards { grid-template-columns: 1fr; } .nav a { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="fx-grid"></div>
+
+  <!-- Навігація -->
+  <header class="nav">
+    <div class="brand">danya<span>kl1m</span></div>
+    <nav>
+      <a href="#about">Про мене</a>
+      <a href="#exp">Досвід</a>
+      <a href="#skills">Навички</a>
+      <a href="#edu">Освіта</a>
+      <a class="btn-sm" href="#contact">Контакти</a>
+      <a class="btn-sm" href="resume.pdf" download target="_blank" rel="noopener">Скачать PDF</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1 class="title reveal">Климкін Данило — <span class="accent">Junior Media Buyer</span> / Студент Інженерії ПЗ</h1>
+    <p class="lead reveal d1">Вмотивований та організований. Досвід у Google Ads (Search, КММ, YouTube), A/B тестуванні, роботі з бюджетами до $25k/міс. Київ.</p>
+    <div class="contact reveal d2">
+      <span class="chip">📍 Київ</span>
+      <a class="chip" href="tel:+380667489452">📞 +38 (066) 748 94 52</a>
+      <a class="chip" href="mailto:klimckin2004@gmail.com">✉️ klimckin2004@gmail.com</a>
+      <a class="chip" href="https://t.me/kkllkkll20" target="_blank" rel="noopener">💬 Telegram: @kkllkkll20</a>
+    </div>
+    <div class="cta reveal d3">
+      <a class="btn" href="#exp">Подивитися досвід</a>
+      <a class="btn" href="resume.pdf" download target="_blank" rel="noopener">Скачать PDF</a>
+      <a class="link" href="#skills">Навички ↓</a>
+    </div>
+  </section>
+
+  <!-- Про мене + Ключові тези -->
+  <section id="about" class="section">
+    <div class="container grid-2">
+      <div class="panel reveal">
+        <h2 class="h2">Про мене</h2>
+        <p class="muted">Швидко навчаюся, орієнтований на результат. Лідирую в рейтингу успішності групи (стипендія), маю досвід роботи з людьми різного віку та професій, люблю технології та постійний розвиток.</p>
+      </div>
+      <div class="panel reveal d1">
+        <h2 class="h2">Ключові сильні сторони</h2>
+        <div class="cards">
+          <div class="card"><strong>Аналітика</strong><br/><span class="muted">CTR, CPC, CPA, ROAS</span></div>
+          <div class="card"><strong>A/B тестування</strong><br/><span class="muted">креативи та цільові</span></div>
+          <div class="card"><strong>Комунікація</strong><br/><span class="muted">презентації, переговори</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Досвід -->
+  <section id="exp" class="section" style="padding-top: 40px;">
+    <div class="container">
+      <h2 class="h2 reveal">Досвід роботи</h2>
+      <div class="panel reveal d1 timeline">
+        <div class="tl">
+          <div class="where">Junior Media Buyer — "Pixoram" (Київ)</div>
+          <div class="meta">Жовтень 2024 — Травень 2025</div>
+          <ul class="muted">
+            <li>Запуск та оптимізація Google Ads (Пошук, КММ, YouTube).</li>
+            <li>Аналіз метрик: CTR, CPC, CPA, ROAS; масштабування прибуткових кампаній.</li>
+            <li>A/B тестування креативів та цільових сторінок, робота з бюджетами до $25k/міс.</li>
+            <li>Звітність, рекомендації, співпраця з дизайнером і копірайтером.</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="where">Адміністратор — Центр відпочинку «КНЯЖИЙ»</div>
+          <div class="meta">Оффлайн (Чернігівська обл.)</div>
+          <ul class="muted">
+            <li>Реєстрація/заселення гостей, бронювання, сервіс у готелі та ресторані.</li>
+            <li>Комунікація та вирішення питань, контроль якості послуг, звітність.</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="where">Відділ HELP — Арбітражна команда «WEB TRAFF» (Remote)</div>
+          <ul class="muted">
+            <li>Підготовка постів та акаунтів для заливу, створення креативів.</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="where">Агент з нерухомості — «АН RPG» / «Golden Tower»</div>
+          <ul class="muted">
+            <li>Пошук об’єктів, ведення бази, реклама, покази та переговори.</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="where">Менеджер з продажу — Київ</div>
+          <ul class="muted">
+            <li>Прийом заявок, робота з CRM, інформування клієнтів, задачі від керівника.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Навички -->
+  <section id="skills" class="section" style="background: var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container grid-2">
+      <div class="panel reveal">
+        <h2 class="h2">Digital & Інструменти</h2>
+        <div class="list">
+          <div class="item"><h3>Google Ads, Google Docs/Drive</h3><div class="meta">Instagram, Facebook, WhatsApp, Gmail, Zoom, Skype, Outlook</div></div>
+          <div class="item"><h3>Microsoft Office</h3><div class="meta">Word, Excel, PowerPoint, OneDrive</div></div>
+          <div class="item"><h3>Дизайн/Медіа</h3><div class="meta">Adobe Photoshop, Sony Vegas Pro</div></div>
+          <div class="item"><h3>Dev</h3><div class="meta">Visual Studio 2022, C++; основи HTML, CSS, JavaScript</div></div>
+        </div>
+      </div>
+      <div class="panel reveal d1">
+        <h2 class="h2">Soft & Communication</h2>
+        <ul class="muted">
+          <li>Командна робота, проактивність, робота під тиском.</li>
+          <li>Планування, організація процесів, управління часом.</li>
+          <li>Презентації, переговори, вирішення конфліктів.</li>
+          <li>Критичне та аналітичне мислення, креативність.</li>
+        </ul>
+        <div class="cards" style="margin-top:14px;">
+          <div class="card"><strong>UA</strong><br/><span class="muted">рідна</span></div>
+          <div class="card"><strong>EN</strong><br/><span class="muted">B1</span></div>
+          <div class="card"><strong>RU</strong><br/><span class="muted">C2</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Освіта / Курси -->
+  <section id="edu" class="section">
+    <div class="container grid-2">
+      <div class="panel reveal">
+        <h2 class="h2">Освіта</h2>
+        <div class="timeline">
+          <div class="tl">
+            <div class="where">Європейський Університет — Інженерія ПЗ (бакалавр)</div>
+            <div class="meta">2021 — 2026, Київ</div>
+          </div>
+          <div class="tl">
+            <div class="where">КПІ — Прикладна механіка (бакалавр)</div>
+            <div class="meta">2020 — 2021, Київ</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel reveal d1">
+        <h2 class="h2">Вебінари та події</h2>
+        <ul class="muted">
+          <li>Go IT — Тестування ПЗ (7-денний вебінар)</li>
+          <li>TRAFFIC JACK TEAM — Affiliate Marketing</li>
+          <li>Pro IT — Full Stack: CSS/HTML/JavaScript</li>
+          <li>Arbitrage Up — створення та запуск рекламних кампаній</li>
+          <li>Багато курсів з YouTube у сферах IT та маркетингу</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакти -->
+  <section id="contact" class="section" style="padding-top: 40px;">
+    <div class="container">
+      <h2 class="h2 reveal">Контакти</h2>
+      <div class="panel reveal d1">
+        <div class="contact" style="margin-top:4px;">
+          <span class="chip">📍 Київ</span>
+          <a class="chip" href="tel:+380667489452">📞 +38 (066) 748 94 52</a>
+          <a class="chip" href="mailto:klimckin2004@gmail.com">✉️ klimckin2004@gmail.com</a>
+          <a class="chip" href="https://t.me/kkllkkll20" target="_blank" rel="noopener">💬 Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2025 — Данило Климкін. Усі права захищено.</div>
+  </footer>
+
+  <script>
+    // IntersectionObserver для плавного проявлення
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Повага до налаштувань доступності
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('reduced-motion');
+    }
+  </script>
+</body>
+</html>
